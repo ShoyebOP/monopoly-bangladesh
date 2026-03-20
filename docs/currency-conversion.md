@@ -7,9 +7,9 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 ## Exchange Rate
 
-**Exchange Rate Used:** 1 USD = ৳100 BDT (rounded for gameplay simplicity)
+**Exchange Rate Used:** 1 USD = ৳10 BDT (rounded for gameplay simplicity)
 
-**Note:** Actual exchange rate varies (approximately ৳110-120 as of 2024), but ৳100 is used for easier mental math during gameplay.
+**Note:** This simplified rate keeps numbers manageable during gameplay while maintaining proportional value differences.
 
 ---
 
@@ -19,79 +19,79 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Mediterranean Avenue (Kuril Basti) | $60 | ৳6,000 |
-| Baltic Avenue (Karail Basti) | $60 | ৳6,000 |
+| Mediterranean Avenue (Kuril Basti) | $60 | ৳600 |
+| Baltic Avenue (Karail Basti) | $60 | ৳600 |
 
-**House/Hotel Cost:** $50 → ৳5,000 each
+**House/Hotel Cost:** $50 → ৳500 each
 
 ### Color Group 2 (Light Blue)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Oriental Avenue (Mirpur) | $100 | ৳10,000 |
-| Vermont Avenue (Mohammadpur) | $100 | ৳10,000 |
-| Connecticut Avenue (Uttara) | $120 | ৳12,000 |
+| Oriental Avenue (Mirpur) | $100 | ৳1,000 |
+| Vermont Avenue (Mohammadpur) | $100 | ৳1,000 |
+| Connecticut Avenue (Uttara) | $120 | ৳1,200 |
 
-**House/Hotel Cost:** $50 → ৳5,000 each
+**House/Hotel Cost:** $50 → ৳500 each
 
 ### Color Group 3 (Pink)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| St. Charles Place (Tejgaon) | $140 | ৳14,000 |
-| States Avenue (Khilgaon) | $140 | ৳14,000 |
-| Virginia Avenue (Magbazar) | $160 | ৳16,000 |
+| St. Charles Place (Tejgaon) | $140 | ৳1,400 |
+| States Avenue (Khilgaon) | $140 | ৳1,400 |
+| Virginia Avenue (Magbazar) | $160 | ৳1,600 |
 
-**House/Hotel Cost:** $100 → ৳10,000 each
+**House/Hotel Cost:** $100 → ৳1,000 each
 
 ### Color Group 4 (Orange)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| St. James Place (Malibagh) | $180 | ৳18,000 |
-| Tennessee Avenue (Rampura) | $180 | ৳18,000 |
-| New York Avenue (Basabo) | $200 | ৳20,000 |
+| St. James Place (Malibagh) | $180 | ৳1,800 |
+| Tennessee Avenue (Rampura) | $180 | ৳1,800 |
+| New York Avenue (Basabo) | $200 | ৳2,000 |
 
-**House/Hotel Cost:** $100 → ৳10,000 each
+**House/Hotel Cost:** $100 → ৳1,000 each
 
 ### Color Group 5 (Red)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Kentucky Avenue (Dhanmondi) | $220 | ৳22,000 |
-| Indiana Avenue (Green Road) | $220 | ৳22,000 |
-| Illinois Avenue (Elephant Road) | $240 | ৳24,000 |
+| Kentucky Avenue (Dhanmondi) | $220 | ৳2,200 |
+| Indiana Avenue (Green Road) | $220 | ৳2,200 |
+| Illinois Avenue (Elephant Road) | $240 | ৳2,400 |
 
-**House/Hotel Cost:** $150 → ৳15,000 each
+**House/Hotel Cost:** $150 → ৳1,500 each
 
 ### Color Group 6 (Yellow)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Atlantic Avenue (Kalabagan) | $260 | ৳26,000 |
-| Ventnor Avenue (New Market) | $260 | ৳26,000 |
-| Marvin Gardens (Paltan) | $280 | ৳28,000 |
+| Atlantic Avenue (Kalabagan) | $260 | ৳2,600 |
+| Ventnor Avenue (New Market) | $260 | ৳2,600 |
+| Marvin Gardens (Paltan) | $280 | ৳2,800 |
 
-**House/Hotel Cost:** $150 → ৳15,000 each
+**House/Hotel Cost:** $150 → ৳1,500 each
 
 ### Color Group 7 (Green)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Pacific Avenue (Shahbag) | $300 | ৳30,000 |
-| North Carolina Avenue (Karwan Bazar) | $300 | ৳30,000 |
-| Pennsylvania Avenue (Gulshan-1) | $320 | ৳32,000 |
+| Pacific Avenue (Shahbag) | $300 | ৳3,000 |
+| North Carolina Avenue (Karwan Bazar) | $300 | ৳3,000 |
+| Pennsylvania Avenue (Gulshan-1) | $320 | ৳3,200 |
 
-**House/Hotel Cost:** $200 → ৳20,000 each
+**House/Hotel Cost:** $200 → ৳2,000 each
 
 ### Color Group 8 (Dark Blue)
 
 | Property | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Park Place (Banani) | $350 | ৳35,000 |
-| Boardwalk (Bashundhara) | $400 | ৳40,000 |
+| Park Place (Banani) | $350 | ৳3,500 |
+| Boardwalk (Bashundhara) | $400 | ৳4,000 |
 
-**House/Hotel Cost:** $200 → ৳20,000 each
+**House/Hotel Cost:** $200 → ৳2,000 each
 
 ---
 
@@ -99,12 +99,12 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Railroad | USD Price | BDT Price (৳) |
 |----------|-----------|---------------|
-| Kamalapur Railway Station | $200 | ৳20,000 |
-| Bimanbandar Railway Station | $200 | ৳20,000 |
-| Akhataruzzaman Railway Station | $200 | ৳20,000 |
-| Hazipur Railway Station | $200 | ৳20,000 |
+| Kamalapur Railway Station | $200 | ৳2,000 |
+| Bimanbandar Railway Station | $200 | ৳2,000 |
+| Akhataruzzaman Railway Station | $200 | ৳2,000 |
+| Hazipur Railway Station | $200 | ৳2,000 |
 
-**Mortgage Value:** $100 → ৳10,000 each
+**Mortgage Value:** $100 → ৳1,000 each
 
 ---
 
@@ -112,10 +112,10 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Utility | USD Price | BDT Price (৳) |
 |---------|-----------|---------------|
-| DESCO | $150 | ৳15,000 |
-| WASA | $150 | ৳15,000 |
+| DESCO | $150 | ৳1,500 |
+| WASA | $150 | ৳1,500 |
 
-**Mortgage Value:** $75 → ৳7,500 each
+**Mortgage Value:** $75 → ৳750 each
 
 ---
 
@@ -123,8 +123,8 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Tax | USD Amount | BDT Amount (৳) |
 |-----|------------|----------------|
-| Income Tax (আয়কর) | $200 or 10% | ৳20,000 or 10% |
-| Luxury Tax (বিলাসিতা কর) | $100 | ৳10,000 |
+| Income Tax (আয়কর) | $200 or 10% | ৳2,000 or 10% |
+| Luxury Tax (বিলাসিতা কর) | $100 | ৳1,000 |
 
 ---
 
@@ -132,14 +132,14 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Denomination | Quantity | USD Total | BDT Total (৳) |
 |--------------|----------|-----------|---------------|
-| ৳5,000 | 2 | $1,000 | ৳100,000 |
-| ৳1,000 | 2 | $200 | ৳20,000 |
-| ৳500 | 2 | $100 | ৳10,000 |
-| ৳200 | 6 | $120 | ৳12,000 |
-| ৳100 | 5 | $50 | ৳5,000 |
-| ৳50 | 5 | $25 | ৳2,500 |
-| ৳10 | 5 | $5 | ৳500 |
-| **Total** | | **$1,500** | **৳150,000** |
+| ৳500 | 2 | $1,000 | ৳10,000 |
+| ৳100 | 2 | $200 | ৳2,000 |
+| ৳50 | 2 | $100 | ৳1,000 |
+| ৳20 | 6 | $120 | ৳1,200 |
+| ৳10 | 5 | $50 | ৳500 |
+| ৳5 | 5 | $25 | ৳250 |
+| ৳1 | 5 | $5 | ৳50 |
+| **Total** | | **$1,500** | **৳15,000** |
 
 ---
 
@@ -149,63 +149,63 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Kuril Basti | $2 / ৳200 | $10 / ৳1,000 | $30 / ৳3,000 | $90 / ৳9,000 | $160 / ৳16,000 | $250 / ৳25,000 |
-| Karail Basti | $4 / ৳400 | $20 / ৳2,000 | $60 / ৳6,000 | $180 / ৳18,000 | $320 / ৳32,000 | $450 / ৳45,000 |
+| Kuril Basti | $2 / ৳20 | $10 / ৳100 | $30 / ৳300 | $90 / ৳900 | $160 / ৳1,600 | $250 / ৳2,500 |
+| Karail Basti | $4 / ৳40 | $20 / ৳200 | $60 / ৳600 | $180 / ৳1,800 | $320 / ৳3,200 | $450 / ৳4,500 |
 
 ### Light Blue Properties (Mirpur, Mohammadpur, Uttara)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Mirpur | $6 / ৳600 | $30 / ৳3,000 | $90 / ৳9,000 | $270 / ৳27,000 | $400 / ৳40,000 | $550 / ৳55,000 |
-| Mohammadpur | $6 / ৳600 | $30 / ৳3,000 | $90 / ৳9,000 | $270 / ৳27,000 | $400 / ৳40,000 | $550 / ৳55,000 |
-| Uttara | $8 / ৳800 | $40 / ৳4,000 | $100 / ৳10,000 | $300 / ৳30,000 | $450 / ৳45,000 | $600 / ৳60,000 |
+| Mirpur | $6 / ৳60 | $30 / ৳300 | $90 / ৳900 | $270 / ৳2,700 | $400 / ৳4,000 | $550 / ৳5,500 |
+| Mohammadpur | $6 / ৳60 | $30 / ৳300 | $90 / ৳900 | $270 / ৳2,700 | $400 / ৳4,000 | $550 / ৳5,500 |
+| Uttara | $8 / ৳80 | $40 / ৳400 | $100 / ৳1,000 | $300 / ৳3,000 | $450 / ৳4,500 | $600 / ৳6,000 |
 
 ### Pink Properties (Tejgaon, Khilgaon, Magbazar)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Tejgaon | $10 / ৳1,000 | $50 / ৳5,000 | $150 / ৳15,000 | $450 / ৳45,000 | $625 / ৳62,500 | $750 / ৳75,000 |
-| Khilgaon | $10 / ৳1,000 | $50 / ৳5,000 | $150 / ৳15,000 | $450 / ৳45,000 | $625 / ৳62,500 | $750 / ৳75,000 |
-| Magbazar | $12 / ৳1,200 | $60 / ৳6,000 | $180 / ৳18,000 | $500 / ৳50,000 | $700 / ৳70,000 | $900 / ৳90,000 |
+| Tejgaon | $10 / ৳100 | $50 / ৳500 | $150 / ৳1,500 | $450 / ৳4,500 | $625 / ৳6,250 | $750 / ৳7,500 |
+| Khilgaon | $10 / ৳100 | $50 / ৳500 | $150 / ৳1,500 | $450 / ৳4,500 | $625 / ৳6,250 | $750 / ৳7,500 |
+| Magbazar | $12 / ৳120 | $60 / ৳600 | $180 / ৳1,800 | $500 / ৳5,000 | $700 / ৳7,000 | $900 / ৳9,000 |
 
 ### Orange Properties (Malibagh, Rampura, Basabo)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Malibagh | $14 / ৳1,400 | $70 / ৳7,000 | $200 / ৳20,000 | $550 / ৳55,000 | $750 / ৳75,000 | $950 / ৳95,000 |
-| Rampura | $14 / ৳1,400 | $70 / ৳7,000 | $200 / ৳20,000 | $550 / ৳55,000 | $750 / ৳75,000 | $950 / ৳95,000 |
-| Basabo | $16 / ৳1,600 | $80 / ৳8,000 | $220 / ৳22,000 | $600 / ৳60,000 | $800 / ৳80,000 | $1,000 / ৳100,000 |
+| Malibagh | $14 / ৳140 | $70 / ৳700 | $200 / ৳2,000 | $550 / ৳5,500 | $750 / ৳7,500 | $950 / ৳9,500 |
+| Rampura | $14 / ৳140 | $70 / ৳700 | $200 / ৳2,000 | $550 / ৳5,500 | $750 / ৳7,500 | $950 / ৳9,500 |
+| Basabo | $16 / ৳160 | $80 / ৳800 | $220 / ৳2,200 | $600 / ৳6,000 | $800 / ৳8,000 | $1,000 / ৳10,000 |
 
 ### Red Properties (Dhanmondi, Green Road, Elephant Road)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Dhanmondi | $18 / ৳1,800 | $90 / ৳9,000 | $250 / ৳25,000 | $700 / ৳70,000 | $875 / ৳87,500 | $1,050 / ৳105,000 |
-| Green Road | $18 / ৳1,800 | $90 / ৳9,000 | $250 / ৳25,000 | $700 / ৳70,000 | $875 / ৳87,500 | $1,050 / ৳105,000 |
-| Elephant Road | $20 / ৳2,000 | $100 / ৳10,000 | $300 / ৳30,000 | $750 / ৳75,000 | $925 / ৳92,500 | $1,100 / ৳110,000 |
+| Dhanmondi | $18 / ৳180 | $90 / ৳900 | $250 / ৳2,500 | $700 / ৳7,000 | $875 / ৳8,750 | $1,050 / ৳10,500 |
+| Green Road | $18 / ৳180 | $90 / ৳900 | $250 / ৳2,500 | $700 / ৳7,000 | $875 / ৳8,750 | $1,050 / ৳10,500 |
+| Elephant Road | $20 / ৳200 | $100 / ৳1,000 | $300 / ৳3,000 | $750 / ৳7,500 | $925 / ৳9,250 | $1,100 / ৳11,000 |
 
 ### Yellow Properties (Kalabagan, New Market, Paltan)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Kalabagan | $22 / ৳2,200 | $110 / ৳11,000 | $330 / ৳33,000 | $800 / ৳80,000 | $975 / ৳97,500 | $1,150 / ৳115,000 |
-| New Market | $22 / ৳2,200 | $110 / ৳11,000 | $330 / ৳33,000 | $800 / ৳80,000 | $975 / ৳97,500 | $1,150 / ৳115,000 |
-| Paltan | $24 / ৳2,400 | $120 / ৳12,000 | $360 / ৳36,000 | $850 / ৳85,000 | $1,025 / ৳102,500 | $1,200 / ৳120,000 |
+| Kalabagan | $22 / ৳220 | $110 / ৳1,100 | $330 / ৳3,300 | $800 / ৳8,000 | $975 / ৳9,750 | $1,150 / ৳11,500 |
+| New Market | $22 / ৳220 | $110 / ৳1,100 | $330 / ৳3,300 | $800 / ৳8,000 | $975 / ৳9,750 | $1,150 / ৳11,500 |
+| Paltan | $24 / ৳240 | $120 / ৳1,200 | $360 / ৳3,600 | $850 / ৳8,500 | $1,025 / ৳10,250 | $1,200 / ৳12,000 |
 
 ### Green Properties (Shahbag, Karwan Bazar, Gulshan-1)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Shahbag | $26 / ৳2,600 | $130 / ৳13,000 | $390 / ৳39,000 | $900 / ৳90,000 | $1,100 / ৳110,000 | $1,275 / ৳127,500 |
-| Karwan Bazar | $26 / ৳2,600 | $130 / ৳13,000 | $390 / ৳39,000 | $900 / ৳90,000 | $1,100 / ৳110,000 | $1,275 / ৳127,500 |
-| Gulshan-1 | $28 / ৳2,800 | $150 / ৳15,000 | $450 / ৳45,000 | $1,000 / ৳100,000 | $1,200 / ৳120,000 | $1,400 / ৳140,000 |
+| Shahbag | $26 / ৳260 | $130 / ৳1,300 | $390 / ৳3,900 | $900 / ৳9,000 | $1,100 / ৳11,000 | $1,275 / ৳12,750 |
+| Karwan Bazar | $26 / ৳260 | $130 / ৳1,300 | $390 / ৳3,900 | $900 / ৳9,000 | $1,100 / ৳11,000 | $1,275 / ৳12,750 |
+| Gulshan-1 | $28 / ৳280 | $150 / ৳1,500 | $450 / ৳4,500 | $1,000 / ৳10,000 | $1,200 / ৳12,000 | $1,400 / ৳14,000 |
 
 ### Dark Blue Properties (Banani, Bashundhara)
 
 | Property | Unimproved | 1 House | 2 Houses | 3 Houses | 4 Houses | Hotel |
 |----------|------------|---------|----------|----------|----------|-------|
-| Banani | $35 / ৳3,500 | $175 / ৳17,500 | $500 / ৳50,000 | $1,100 / ৳110,000 | $1,300 / ৳130,000 | $1,500 / ৳150,000 |
-| Bashundhara | $50 / ৳5,000 | $200 / ৳20,000 | $600 / ৳60,000 | $1,400 / ৳140,000 | $1,700 / ৳170,000 | $2,000 / ৳200,000 |
+| Banani | $35 / ৳350 | $175 / ৳1,750 | $500 / ৳5,000 | $1,100 / ৳11,000 | $1,300 / ৳13,000 | $1,500 / ৳15,000 |
+| Bashundhara | $50 / ৳500 | $200 / ৳2,000 | $600 / ৳6,000 | $1,400 / ৳14,000 | $1,700 / ৳17,000 | $2,000 / ৳20,000 |
 
 ---
 
@@ -213,7 +213,7 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Railroad | 1 Railroad | 2 Railroads | 3 Railroads | 4 Railroads |
 |----------|------------|-------------|-------------|-------------|
-| All Railroads | $25 / ৳2,500 | $50 / ৳5,000 | $100 / ৳10,000 | $200 / ৳20,000 |
+| All Railroads | $25 / ৳250 | $50 / ৳500 | $100 / ৳1,000 | $200 / ৳2,000 |
 
 ---
 
@@ -221,8 +221,8 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Utilities Owned | Rent Formula | Example (Roll 7) |
 |-----------------|--------------|------------------|
-| 1 Utility | 4× dice roll | 4×7 = ৳2,800 |
-| 2 Utilities | 10× dice roll | 10×7 = ৳7,000 |
+| 1 Utility | 4× dice roll | 4×7 = ৳280 |
+| 2 Utilities | 10× dice roll | 10×7 = ৳700 |
 
 ---
 
@@ -232,39 +232,39 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 
 | Card | USD Amount | BDT Amount (৳) |
 |------|------------|----------------|
-| Bank dividend | $50 | ৳5,000 |
-| Doctor's fee | $50 | ৳5,000 |
-| Stock sale | $50 | ৳5,000 |
-| School tax | $150 | ৳15,000 |
-| Building loan | $150 | ৳15,000 |
-| Cricket match competition | $100 | ৳10,000 |
-| Chairman fee (per player) | $50 | ৳5,000 |
+| Bank dividend | $50 | ৳500 |
+| Doctor's fee | $50 | ৳500 |
+| Stock sale | $50 | ৳500 |
+| School tax | $150 | ৳1,500 |
+| Building loan | $150 | ৳1,500 |
+| Cricket match competition | $100 | ৳1,000 |
+| Chairman fee (per player) | $50 | ৳500 |
 
 ### Community Chest Cards
 
 | Card | USD Amount | BDT Amount (৳) |
 |------|------------|----------------|
-| Bank error | $200 | ৳20,000 |
-| Doctor's fee | $50 | ৳5,000 |
-| Stock sale | $50 | ৳5,000 |
-| Holiday fund | $100 | ৳10,000 |
-| Income tax refund | $20 | ৳2,000 |
-| Birthday (per player) | $10 | ৳1,000 |
-| Life insurance | $100 | ৳10,000 |
-| Hospital fees | $100 | ৳10,000 |
-| School fees | $50 | ৳5,000 |
-| Consultancy fee | $25 | ৳2,500 |
-| Street repairs (per house) | $40 | ৳4,000 |
-| Street repairs (per hotel) | $115 | ৳11,500 |
-| Cultural program prize | $10 | ৳1,000 |
-| Inheritance | $100 | ৳10,000 |
+| Bank error | $200 | ৳2,000 |
+| Doctor's fee | $50 | ৳500 |
+| Stock sale | $50 | ৳500 |
+| Holiday fund | $100 | ৳1,000 |
+| Income tax refund | $20 | ৳200 |
+| Birthday (per player) | $10 | ৳100 |
+| Life insurance | $100 | ৳1,000 |
+| Hospital fees | $100 | ৳1,000 |
+| School fees | $50 | ৳500 |
+| Consultancy fee | $25 | ৳250 |
+| Street repairs (per house) | $40 | ৳400 |
+| Street repairs (per hotel) | $115 | ৳1,150 |
+| Cultural program prize | $10 | ৳100 |
+| Inheritance | $100 | ৳1,000 |
 
 ---
 
 ## Conversion Methodology
 
-1. **Exchange Rate:** 1 USD = ৳100 BDT (rounded for simplicity)
-2. **Rounding:** All values are exact multiples of 100 for easy calculation
+1. **Exchange Rate:** 1 USD = ৳10 BDT (rounded for simplicity)
+2. **Rounding:** All values are exact multiples of 10 for easy calculation
 3. **Consistency:** Same rate applied throughout all conversions
 4. **Playability:** Numbers designed for mental math during gameplay
 
@@ -273,9 +273,9 @@ All Monopoly money values converted from USD to Bangladeshi Taka (BDT).
 ## Conversion Formula
 
 ```
-BDT Amount = USD Amount × 100
+BDT Amount = USD Amount × 10
 
-Example: $200 × 100 = ৳20,000
+Example: $200 × 10 = ৳2,000
 ```
 
 ---
@@ -284,8 +284,8 @@ Example: $200 × 100 = ৳20,000
 
 | Category | Total USD | Total BDT (৳) |
 |----------|-----------|---------------|
-| All Properties | $3,040 | ৳304,000 |
-| All Railroads | $800 | ৳80,000 |
-| All Utilities | $300 | ৳30,000 |
-| **Total Board Value** | **$4,140** | **৳414,000** |
-| Starting Money (per player) | $1,500 | ৳150,000 |
+| All Properties | $3,040 | ৳30,400 |
+| All Railroads | $800 | ৳8,000 |
+| All Utilities | $300 | ৳3,000 |
+| **Total Board Value** | **$4,140** | **৳41,400** |
+| Starting Money (per player) | $1,500 | ৳15,000 |
