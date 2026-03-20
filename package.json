@@ -1,0 +1,36 @@
+{
+  "name": "monopoly-bangladesh",
+  "version": "0.1.0",
+  "description": "A lightweight web-based Monopoly game optimized for low-end Android devices, featuring Bangladeshi cities and language",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/",
+    "lint": "eslint src/ cli/ public/",
+    "format": "prettier --write src/ cli/ public/"
+  },
+  "keywords": [
+    "monopoly",
+    "bangladesh",
+    "board-game",
+    "multiplayer",
+    "termux"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "commander": "^12.0.0",
+    "express": "^4.19.0",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
