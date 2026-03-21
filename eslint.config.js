@@ -4,6 +4,7 @@ import globals from "globals";
 
 export default [
   {
+    files: ["src/**/*.js", "cli/**/*.js"],
     languageOptions: {
       ecmaVersion: 2024,
       sourceType: "module",
@@ -25,7 +26,27 @@ export default [
       }
     },
     rules: {
-      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
+      "no-undef": "error",
+      eqeqeq: ["error", "always"],
+      curly: ["error", "all"],
+      "no-var": "error",
+      "prefer-const": "error",
+      "no-console": "off"
+    }
+  },
+  {
+    files: ["public/**/*.js", "tests/**/*.js"],
+    languageOptions: {
+      ecmaVersion: 2024,
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node
+      }
+    },
+    rules: {
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       "no-undef": "error",
       eqeqeq: ["error", "always"],
       curly: ["error", "all"],

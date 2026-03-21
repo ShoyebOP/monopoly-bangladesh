@@ -15,11 +15,15 @@
       "setTimeout": "readonly",
       "setInterval": "readonly",
       "clearTimeout": "readonly",
-      "clearInterval": "readonly"
+      "clearInterval": "readonly",
+      "window": "readonly",
+      "document": "readonly",
+      "WebSocket": "readonly",
+      "fetch": "readonly"
     }
   },
   "rules": {
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
     "no-undef": "error",
     "eqeqeq": ["error", "always"],
     "curly": ["error", "all"],

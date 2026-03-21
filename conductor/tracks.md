@@ -4,7 +4,7 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Phase 1 MVP Core - Implement core Monopoly gameplay with CLI management, SQLite persistence, and mobile-optimized web UI**
+- [~] **Track: Phase 1 MVP Core - Implement core Monopoly gameplay with CLI management, SQLite persistence, and mobile-optimized web UI**
 *Link: [./tracks/phase-1-mvp-core_20260321/](./tracks/phase-1-mvp-core_20260321/)*
 
 ---
