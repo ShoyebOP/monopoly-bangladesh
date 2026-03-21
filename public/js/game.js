@@ -247,29 +247,35 @@ function generateBoardSpaces() {
 
 /**
  * Get grid position for a space index
+ * Standard Monopoly board layout:
+ * - Go is at bottom-right (space 0)
+ * - Bottom row: 0-10 (right to left)
+ * - Left column: 10-20 (bottom to top)
+ * - Top row: 20-30 (left to right)
+ * - Right column: 30-40 (top to bottom)
  */
 function getGridPosition(index) {
   // Board is 11x11 grid
-  // Top row: 0-10 (row 1, cols 11-1)
-  // Right column: 10-20 (rows 1-11, col 1)
-  // Bottom row: 20-30 (row 11, cols 1-11)
-  // Left column: 30-40 (rows 11-1, col 11)
+  // Bottom row (Go corner): spaces 0-10, row 11, cols 11-1
+  // Left column: spaces 10-20, rows 11-1, col 1
+  // Top row: spaces 20-30, row 1, cols 1-11
+  // Right column: spaces 30-40, rows 1-11, col 11
   
   if (index >= 0 && index <= 10) {
-    // Top row (right to left)
-    return { row: 1, col: 11 - index };
+    // Bottom row (right to left, Go is at bottom-right)
+    return { row: 11, col: 11 - index };
   } else if (index >= 11 && index <= 20) {
-    // Right column (top to bottom)
-    return { row: index - 9, col: 1 };
-  } else if (index >= 21 && index <= 30) {
-    // Bottom row (left to right)
-    return { row: 11, col: index - 19 };
-  } else if (index >= 31 && index <= 40) {
     // Left column (bottom to top)
-    return { row: 41 - index, col: 11 };
+    return { row: 11 - (index - 10), col: 1 };
+  } else if (index >= 21 && index <= 30) {
+    // Top row (left to right)
+    return { row: 1, col: index - 19 };
+  } else if (index >= 31 && index <= 39) {
+    // Right column (top to bottom)
+    return { row: index - 29, col: 11 };
   }
   
-  return { row: 1, col: 1 };
+  return { row: 11, col: 11 }; // Default to Go position
 }
 
 /**

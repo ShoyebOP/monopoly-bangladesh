@@ -55,6 +55,7 @@ body {
   background-color: var(--color-background);
   line-height: 1.5;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* Header */
@@ -100,23 +101,28 @@ body {
   padding: var(--spacing-md);
   max-width: 1200px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 /* Board Container */
 .board-container {
   margin-bottom: var(--spacing-lg);
-  overflow-x: auto;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .board {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(11, 1fr);
-  gap: 2px;
+  gap: 1px;
   background-color: var(--color-border);
   border: 2px solid var(--color-text);
-  min-width: 600px;
+  width: 100%;
+  max-width: 500px;
   aspect-ratio: 1 / 1;
+  flex-shrink: 0;
 }
 
 /* Board Spaces */
@@ -484,32 +490,41 @@ body {
 @media (orientation: landscape) {
   .game-container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--spacing-lg);
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: auto auto 1fr;
+    gap: var(--spacing-md);
+    max-height: 100vh;
+    overflow: hidden;
   }
   
   .board-container {
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+  }
+  
+  .board {
+    max-width: 45vh;
   }
   
   .controls-panel {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
   }
   
   .player-panel {
     grid-column: 2 / 3;
-    grid-row: 1 / 2;
-  }
-  
-  .property-panel {
-    grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
   
+  .property-panel {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+  
   .game-log {
-    grid-column: 1 / 3;
+    grid-column: 2 / 3;
     grid-row: 3 / 4;
   }
 }
@@ -521,20 +536,28 @@ body {
   }
   
   .board {
-    min-width: 400px;
+    max-width: 320px;
   }
   
   .space {
-    font-size: 10px;
-    padding: 2px;
+    font-size: 8px;
+    padding: 1px;
   }
   
   .space .color-bar {
-    height: 12px;
+    height: 8px;
+  }
+  
+  .space .space-name {
+    font-size: 7px;
+  }
+  
+  .space .space-price {
+    font-size: 6px;
   }
   
   .die {
-    font-size: 32px;
+    font-size: 24px;
   }
   
   .action-buttons {
