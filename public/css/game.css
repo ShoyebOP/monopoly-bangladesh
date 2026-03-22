@@ -85,23 +85,36 @@ body {
   justify-content: center;
 }
 
+:root {
+  /* Property Colors */
+  --color-brown: #8d6e63;
+  --color-lightblue: #4fc3f7;
+  --color-pink: #f06292;
+  --color-orange: #ff9800;
+  --color-red: #e53935;
+  --color-yellow: #fdd835;
+  --color-green: #43a047;
+  --color-darkblue: #1e88e5;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
   grid-template-rows: repeat(11, 1fr);
   gap: 2px;
   background: #e0e0e0;
-  border: 3px solid #333;
+  border: 2px solid #333;
   width: 100%;
-  max-width: 90vmin;
-  aspect-ratio: 1 / 1;
+  max-width: 95vmin;
+  aspect-ratio: 1 / 1.15;
+  padding: 2px;
 }
 
 .space {
   background: white;
   border: 1px solid #ccc;
-  padding: 2px;
-  font-size: 7px;
+  padding: 3px 2px;
+  font-size: 8px;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -126,20 +139,20 @@ body {
 }
 
 .space .color-bar {
-  height: 8px;
+  height: 10px;
   width: 100%;
   border-bottom: 1px solid #ccc;
 }
 
-/* Property Colors */
-.space.brown .color-bar { background: #8d6e63; }
-.space.lightblue .color-bar { background: #4fc3f7; }
-.space.pink .color-bar { background: #f06292; }
-.space.orange .color-bar { background: #ff9800; }
-.space.red .color-bar { background: #e53935; }
-.space.yellow .color-bar { background: #fdd835; }
-.space.green .color-bar { background: #43a047; }
-.space.darkblue .color-bar { background: #1e88e5; }
+/* Property Color Groups */
+.space.brown .color-bar { background: var(--color-brown); }
+.space.lightblue .color-bar { background: var(--color-lightblue); }
+.space.pink .color-bar { background: var(--color-pink); }
+.space.orange .color-bar { background: var(--color-orange); }
+.space.red .color-bar { background: var(--color-red); }
+.space.yellow .color-bar { background: var(--color-yellow); }
+.space.green .color-bar { background: var(--color-green); }
+.space.darkblue .color-bar { background: var(--color-darkblue); }
 
 .space.corner {
   background: #e8eaf6;
