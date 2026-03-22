@@ -190,15 +190,16 @@ function renderBoard() {
 
 /**
  * Generate board spaces data
- * Standard Monopoly board: 40 spaces (0-39), counter-clockwise from Go at bottom-right
- * Following official US Monopoly space order, mapped to Bangladesh locations
+ * Standard Monopoly board: 40 spaces (0-39), clockwise from Go at bottom-right
+ * Following official US Monopoly space order
  */
 function generateBoardSpaces() {
   // Standard Monopoly board layout with Bangladesh localization
   // Prices in BDT (৳) using 1 USD = ৳10 conversion
+  // Board goes CLOCKWISE from Go
   const spaces = [
-    // Bottom row: 0-10 (right to left)
-    { index: 0, name_en: 'Go', name_bn: 'শুরু (Go)', type: 'corner', price: null },
+    // Bottom row: 0-10 (left to right, Go at bottom-right corner)
+    { index: 0, name_en: 'Go', name_bn: 'শুরু (Go)', type: 'corner' },
     { index: 1, name_en: 'Kuril Basti', name_bn: 'কুরিল বস্তি', type: 'property', color: 'brown', price: 600, rent_base: 20, rent_1: 100, rent_2: 300, rent_3: 900, rent_4: 1600, rent_hotel: 2500, house_cost: 500 },
     { index: 2, name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
     { index: 3, name_en: 'Karail Basti', name_bn: 'করাইল বস্তি', type: 'property', color: 'brown', price: 600, rent_base: 40, rent_1: 200, rent_2: 600, rent_3: 1800, rent_4: 3200, rent_hotel: 4500, house_cost: 500 },
@@ -208,42 +209,45 @@ function generateBoardSpaces() {
     { index: 7, name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
     { index: 8, name_en: 'Mohammadpur', name_bn: 'মোহাম্মদপুর', type: 'property', color: 'lightblue', price: 1000, rent_base: 60, rent_1: 300, rent_2: 900, rent_3: 2700, rent_4: 4000, rent_hotel: 5500, house_cost: 500 },
     { index: 9, name_en: 'Uttara', name_bn: 'উত্তরা', type: 'property', color: 'lightblue', price: 1200, rent_base: 80, rent_1: 400, rent_2: 1000, rent_3: 3000, rent_4: 4500, rent_hotel: 6000, house_cost: 500 },
+    // Corner: 10 (Jail - bottom-left)
     { index: 10, name_en: 'Jail', name_bn: 'কারাগার', type: 'corner' },
     
     // Left column: 11-20 (bottom to top)
     { index: 11, name_en: 'Tejgaon', name_bn: 'তেজগাঁও', type: 'property', color: 'pink', price: 1400, rent_base: 100, rent_1: 500, rent_2: 1500, rent_3: 4500, rent_4: 6250, rent_hotel: 7500, house_cost: 1000 },
     { index: 12, name_en: 'DESCO', name_bn: 'ডেসকো', type: 'utility', price: 1500, mortgage: 750 },
     { index: 13, name_en: 'Khilgaon', name_bn: 'খিলগাঁও', type: 'property', color: 'pink', price: 1400, rent_base: 100, rent_1: 500, rent_2: 1500, rent_3: 4500, rent_4: 6250, rent_hotel: 7500, house_cost: 1000 },
-    { index: 14, name_en: 'Bimanbandar Railway Station', name_bn: 'বিমানবন্দর রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
-    { index: 15, name_en: 'Magbazar', name_bn: 'মগবাজার', type: 'property', color: 'pink', price: 1600, rent_base: 120, rent_1: 600, rent_2: 1800, rent_3: 5000, rent_4: 7000, rent_hotel: 9000, house_cost: 1000 },
-    { index: 16, name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
-    { index: 17, name_en: 'Malibagh', name_bn: 'মালিবাগ', type: 'property', color: 'orange', price: 1800, rent_base: 140, rent_1: 700, rent_2: 2000, rent_3: 5500, rent_4: 7500, rent_hotel: 9500, house_cost: 1000 },
+    { index: 14, name_en: 'Magbazar', name_bn: 'মগবাজার', type: 'property', color: 'pink', price: 1600, rent_base: 120, rent_1: 600, rent_2: 1800, rent_3: 5000, rent_4: 7000, rent_hotel: 9000, house_cost: 1000 },
+    { index: 15, name_en: 'Bimanbandar Railway Station', name_bn: 'বিমানবন্দর রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
+    { index: 16, name_en: 'Malibagh', name_bn: 'মালিবাগ', type: 'property', color: 'orange', price: 1800, rent_base: 140, rent_1: 700, rent_2: 2000, rent_3: 5500, rent_4: 7500, rent_hotel: 9500, house_cost: 1000 },
+    { index: 17, name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
     { index: 18, name_en: 'Rampura', name_bn: 'রামপুরা', type: 'property', color: 'orange', price: 1800, rent_base: 140, rent_1: 700, rent_2: 2000, rent_3: 5500, rent_4: 7500, rent_hotel: 9500, house_cost: 1000 },
-    { index: 19, name_en: 'Free Parking', name_bn: 'বিনামূল্যে পার্কিং', type: 'corner' },
+    { index: 19, name_en: 'Basabo', name_bn: 'বাসা বো', type: 'property', color: 'orange', price: 2000, rent_base: 160, rent_1: 800, rent_2: 2200, rent_3: 6000, rent_4: 8000, rent_hotel: 10000, house_cost: 1000 },
+    // Corner: 20 (Free Parking - top-left)
+    { index: 20, name_en: 'Free Parking', name_bn: 'বিনামূল্যে পার্কিং', type: 'corner' },
     
-    // Top row: 20-30 (left to right)
-    { index: 20, name_en: 'Basabo', name_bn: 'বাসা বো', type: 'property', color: 'orange', price: 2000, rent_base: 160, rent_1: 800, rent_2: 2200, rent_3: 6000, rent_4: 8000, rent_hotel: 10000, house_cost: 1000 },
-    { index: 21, name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
-    { index: 22, name_en: 'Dhanmondi', name_bn: 'ধানমন্ডি', type: 'property', color: 'red', price: 2200, rent_base: 180, rent_1: 900, rent_2: 2500, rent_3: 7000, rent_4: 8750, rent_hotel: 10500, house_cost: 1500 },
+    // Top row: 21-30 (left to right)
+    { index: 21, name_en: 'Dhanmondi', name_bn: 'ধানমন্ডি', type: 'property', color: 'red', price: 2200, rent_base: 180, rent_1: 900, rent_2: 2500, rent_3: 7000, rent_4: 8750, rent_hotel: 10500, house_cost: 1500 },
+    { index: 22, name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
     { index: 23, name_en: 'Green Road', name_bn: 'গ্রিন রোড', type: 'property', color: 'red', price: 2200, rent_base: 180, rent_1: 900, rent_2: 2500, rent_3: 7000, rent_4: 8750, rent_hotel: 10500, house_cost: 1500 },
-    { index: 24, name_en: 'Akhataruzzaman Railway Station', name_bn: 'আখতারুজ্জামান রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
-    { index: 25, name_en: 'Elephant Road', name_bn: 'এলিফ্যান্ট রোড', type: 'property', color: 'red', price: 2400, rent_base: 200, rent_1: 1000, rent_2: 3000, rent_3: 7500, rent_4: 9250, rent_hotel: 11000, house_cost: 1500 },
-    { index: 26, name_en: 'WASA', name_bn: 'ওয়াসা', type: 'utility', price: 1500, mortgage: 750 },
-    { index: 27, name_en: 'Go To Jail', name_bn: 'কারাগারে যান', type: 'corner' },
+    { index: 24, name_en: 'Elephant Road', name_bn: 'এলিফ্যান্ট রোড', type: 'property', color: 'red', price: 2400, rent_base: 200, rent_1: 1000, rent_2: 3000, rent_3: 7500, rent_4: 9250, rent_hotel: 11000, house_cost: 1500 },
+    { index: 25, name_en: 'Akhataruzzaman Railway Station', name_bn: 'আখতারুজ্জামান রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
+    { index: 26, name_en: 'Kalabagan', name_bn: 'কলাবাগান', type: 'property', color: 'yellow', price: 2600, rent_base: 220, rent_1: 1100, rent_2: 3300, rent_3: 8000, rent_4: 9750, rent_hotel: 11500, house_cost: 1500 },
+    { index: 27, name_en: 'New Market', name_bn: 'নিউ মার্কেট', type: 'property', color: 'yellow', price: 2600, rent_base: 220, rent_1: 1100, rent_2: 3300, rent_3: 8000, rent_4: 9750, rent_hotel: 11500, house_cost: 1500 },
+    { index: 28, name_en: 'WASA', name_bn: 'ওয়াসা', type: 'utility', price: 1500, mortgage: 750 },
+    { index: 29, name_en: 'Paltan', name_bn: 'পল্টন', type: 'property', color: 'yellow', price: 2800, rent_base: 240, rent_1: 1200, rent_2: 3600, rent_3: 8500, rent_4: 10250, rent_hotel: 12000, house_cost: 1500 },
+    // Corner: 30 (Go To Jail - top-right)
+    { index: 30, name_en: 'Go To Jail', name_bn: 'কারাগারে যান', type: 'corner' },
     
-    // Right column: 28-39 (top to bottom)
-    { index: 28, name_en: 'Kalabagan', name_bn: 'কলাবাগান', type: 'property', color: 'yellow', price: 2600, rent_base: 220, rent_1: 1100, rent_2: 3300, rent_3: 8000, rent_4: 9750, rent_hotel: 11500, house_cost: 1500 },
-    { index: 29, name_en: 'New Market', name_bn: 'নিউ মার্কেট', type: 'property', color: 'yellow', price: 2600, rent_base: 220, rent_1: 1100, rent_2: 3300, rent_3: 8000, rent_4: 9750, rent_hotel: 11500, house_cost: 1500 },
-    { index: 30, name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
-    { index: 31, name_en: 'Paltan', name_bn: 'পল্টন', type: 'property', color: 'yellow', price: 2800, rent_base: 240, rent_1: 1200, rent_2: 3600, rent_3: 8500, rent_4: 10250, rent_hotel: 12000, house_cost: 1500 },
-    { index: 32, name_en: 'Hazipur Railway Station', name_bn: 'হাজীপুর রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
-    { index: 33, name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
-    { index: 34, name_en: 'Shahbag', name_bn: 'শাহবাগ', type: 'property', color: 'green', price: 3000, rent_base: 260, rent_1: 1300, rent_2: 3900, rent_3: 9000, rent_4: 11000, rent_hotel: 12750, house_cost: 2000 },
-    { index: 35, name_en: 'Karwan Bazar', name_bn: 'কারওয়ান বাজার', type: 'property', color: 'green', price: 3000, rent_base: 260, rent_1: 1300, rent_2: 3900, rent_3: 9000, rent_4: 11000, rent_hotel: 12750, house_cost: 2000 },
-    { index: 36, name_en: 'Banani', name_bn: 'বনানী', type: 'property', color: 'darkblue', price: 3500, rent_base: 350, rent_1: 1750, rent_2: 5000, rent_3: 11000, rent_4: 13000, rent_hotel: 15000, house_cost: 2000 },
-    { index: 37, name_en: 'Luxury Tax', name_bn: 'বিলাসিতা কর', type: 'tax', price: 1000 },
-    { index: 38, name_en: 'Bashundhara', name_bn: 'বসুন্ধরা', type: 'property', color: 'darkblue', price: 4000, rent_base: 500, rent_1: 2000, rent_2: 6000, rent_3: 14000, rent_4: 17000, rent_hotel: 20000, house_cost: 2000 },
-    { index: 39, name_en: 'Gulshan-1', name_bn: 'গুলশান-১', type: 'property', color: 'green', price: 3200, rent_base: 280, rent_1: 1500, rent_2: 4500, rent_3: 10000, rent_4: 12000, rent_hotel: 14000, house_cost: 2000 }
+    // Right column: 31-39 (top to bottom)
+    { index: 31, name_en: 'Shahbag', name_bn: 'শাহবাগ', type: 'property', color: 'green', price: 3000, rent_base: 260, rent_1: 1300, rent_2: 3900, rent_3: 9000, rent_4: 11000, rent_hotel: 12750, house_cost: 2000 },
+    { index: 32, name_en: 'Karwan Bazar', name_bn: 'কারওয়ান বাজার', type: 'property', color: 'green', price: 3000, rent_base: 260, rent_1: 1300, rent_2: 3900, rent_3: 9000, rent_4: 11000, rent_hotel: 12750, house_cost: 2000 },
+    { index: 33, name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
+    { index: 34, name_en: 'Gulshan-1', name_bn: 'গুলশান-১', type: 'property', color: 'green', price: 3200, rent_base: 280, rent_1: 1500, rent_2: 4500, rent_3: 10000, rent_4: 12000, rent_hotel: 14000, house_cost: 2000 },
+    { index: 35, name_en: 'Hazipur Railway Station', name_bn: 'হাজীপুর রেলওয়ে স্টেশন', type: 'railroad', price: 2000, mortgage: 1000 },
+    { index: 36, name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
+    { index: 37, name_en: 'Banani', name_bn: 'বনানী', type: 'property', color: 'darkblue', price: 3500, rent_base: 350, rent_1: 1750, rent_2: 5000, rent_3: 11000, rent_4: 13000, rent_hotel: 15000, house_cost: 2000 },
+    { index: 38, name_en: 'Luxury Tax', name_bn: 'বিলাসিতা কর', type: 'tax', price: 1000 },
+    { index: 39, name_en: 'Bashundhara', name_bn: 'বসুন্ধরা', type: 'property', color: 'darkblue', price: 4000, rent_base: 500, rent_1: 2000, rent_2: 6000, rent_3: 14000, rent_4: 17000, rent_hotel: 20000, house_cost: 2000 }
   ];
   
   return spaces;
@@ -253,19 +257,19 @@ function generateBoardSpaces() {
  * Get grid position for a space index
  * Standard Monopoly board layout (40 spaces, 0-39):
  * - Go (0) is at bottom-right corner
- * - Board goes counter-clockwise
- * - Bottom row: 0-10 (Go → Jail, right to left)
- * - Left column: 10-20 (Jail → Free Parking, bottom to top)  
+ * - Board goes CLOCKWISE
+ * - Bottom row: 0-10 (Go → Jail, left to right)
+ * - Left column: 10-20 (Jail → Free Parking, bottom to top)
  * - Top row: 20-30 (Free Parking → Go To Jail, left to right)
- * - Right column: 30-40/0 (Go To Jail → Go, top to bottom)
+ * - Right column: 30-39 (Go To Jail → Bashundhara, top to bottom)
  */
 function getGridPosition(index) {
   // Board is 11x11 grid (positions 1-11 for both row and col)
   // Corners are at: (11,11)=Go, (11,1)=Jail, (1,1)=Free Parking, (1,11)=Go To Jail
   
   if (index >= 0 && index <= 10) {
-    // Bottom row: Go(0) at col 11 → Jail(10) at col 1
-    return { row: 11, col: 11 - index };
+    // Bottom row: Go(0) at col 1 → Jail(10) at col 11
+    return { row: 11, col: index + 1 };
   } else if (index >= 11 && index <= 20) {
     // Left column: Jail(10) at row 11 → Free Parking(20) at row 1
     return { row: 11 - (index - 10), col: 1 };
@@ -273,7 +277,7 @@ function getGridPosition(index) {
     // Top row: Free Parking(20) at col 1 → Go To Jail(30) at col 11
     return { row: 1, col: index - 19 };
   } else if (index >= 31 && index <= 39) {
-    // Right column: Go To Jail(30) at row 1 → Bashundhara(38) at row 9, then back to Go
+    // Right column: Go To Jail(30) at row 1 → Bashundhara(39) at row 10
     return { row: index - 29, col: 11 };
   }
   
