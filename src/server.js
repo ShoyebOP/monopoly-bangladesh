@@ -392,24 +392,29 @@ app.post('/api/games', (req, res) => {
     const { name, playerIds } = req.body;
     if (!name) {return res.status(400).json({ error: 'Game name is required' });}
     const db = getDatabase();
+    
+    // Insert game
     db.run('INSERT INTO games (name, status) VALUES (?, ?)', [name, 'waiting']);
-    saveDatabase();
     const result = db.exec('SELECT last_insert_rowid() as id');
     const gameId = result[0].values[0][0];
+    console.log(`Created game with ID: ${gameId}`);
     
+    // Insert players
     if (playerIds && playerIds.length > 0) {
       playerIds.forEach((playerId) => {
+        console.log(`Adding player ${playerId} to game ${gameId}`);
         db.run('INSERT INTO game_players (game_id, player_id, money, position) VALUES (?, ?, 15000, 0)', [gameId, playerId]);
       });
-      saveDatabase();
       activeGames.set(gameId, { players: playerIds, currentPlayer: 0 });
-      // Update game status
       db.run(`UPDATE games SET status = 'playing' WHERE id = ${gameId}`);
-      saveDatabase();
     }
     
+    saveDatabase();
+    console.log(`Game ${gameId} saved to database`);
+
     res.status(201).json({ id: gameId, name, status: 'playing', playerIds });
   } catch (err) {
+    console.error('Error creating game:', err);
     res.status(500).json({ error: err.message });
   }
 });
