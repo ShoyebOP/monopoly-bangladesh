@@ -169,27 +169,20 @@ function renderPlayers() {
  */
 function renderBoard() {
   const board = document.getElementById('board');
-  
-  // Board layout: 40 spaces in a square
-  // Top row: spaces 0-10 (right to left)
-  // Right column: spaces 10-20 (top to bottom)
-  // Bottom row: spaces 20-30 (left to right)
-  // Left column: spaces 30-40 (bottom to top)
-  
   const spaces = generateBoardSpaces();
-  
-  board.innerHTML = spaces.map((space, index) => {
-    const gridPos = getGridPosition(index);
-    const property = gameState.properties.find(p => p.space_number === index);
-    
+
+  board.innerHTML = spaces.map((space) => {
+    const gridPos = getGridPosition(space.index);
+    const hasColorBar = space.color && space.type === 'property';
+
     return `
-      <div class="space ${space.type} ${space.color || ''}" 
+      <div class="space ${space.type} ${space.color || ''}"
            style="grid-column: ${gridPos.col}; grid-row: ${gridPos.row};"
-           onclick="selectSpace(${index})">
-        ${space.color ? `<div class="color-bar" style="background-color: var(--color-${space.color})"></div>` : ''}
-        <div class="space-name">${property?.name_bn || space.name}</div>
+           onclick="selectSpace(${space.index})">
+        ${hasColorBar ? `<div class="color-bar"></div>` : ''}
+        <div class="space-name">${space.name_bn || space.name}</div>
         ${space.price ? `<div class="space-price">${formatCurrency(space.price)}</div>` : ''}
-        <div class="player-tokens" id="tokens-${index}"></div>
+        <div class="player-tokens" id="tokens-${space.index}"></div>
       </div>
     `;
   }).join('');
@@ -197,49 +190,58 @@ function renderBoard() {
 
 /**
  * Generate board spaces data
+ * Standard Monopoly board: 40 spaces (0-39), counter-clockwise from Go at bottom-right
  */
 function generateBoardSpaces() {
+  // Standard Monopoly board layout (space numbers match official board)
   const spaces = [
-    { index: 0, name: 'শুরু (Go)', type: 'corner' },
-    { index: 1, name: '', type: 'property', color: 'brown' },
-    { index: 2, name: 'কুরিল বস্তি', type: 'property', color: 'brown', price: 60 },
-    { index: 3, name: 'আয়কর', type: 'tax' },
-    { index: 4, name: 'করাইল বস্তি', type: 'property', color: 'brown', price: 60 },
-    { index: 5, name: 'কমলাপুর রেলওয়ে', type: 'railroad', price: 200 },
-    { index: 6, name: '', type: 'property', color: 'lightblue' },
-    { index: 7, name: 'মিরপুর', type: 'property', color: 'lightblue', price: 100 },
-    { index: 8, name: 'সুযোগ', type: 'chance' },
-    { index: 9, name: 'মোহাম্মদপুর', type: 'property', color: 'lightblue', price: 100 },
-    { index: 10, name: 'উত্তরা', type: 'property', color: 'lightblue', price: 120 },
-    { index: 11, name: 'কারাগার', type: 'corner' },
-    { index: 12, name: '', type: 'property', color: 'pink' },
-    { index: 13, name: 'তেজগাঁও', type: 'property', color: 'pink', price: 140 },
-    { index: 14, name: 'ডেসকো', type: 'utility', price: 150 },
-    { index: 15, name: 'খিলগাঁও', type: 'property', color: 'pink', price: 140 },
-    { index: 16, name: 'বিমানবন্দর রেলওয়ে', type: 'railroad', price: 200 },
-    { index: 17, name: 'মগবাজার', type: 'property', color: 'pink', price: 160 },
-    { index: 18, name: 'কমিউনিটি ফান্ড', type: 'community' },
-    { index: 19, name: 'মালিবাগ', type: 'property', color: 'orange', price: 180 },
-    { index: 20, name: 'রামপুরা', type: 'property', color: 'orange', price: 180 },
-    { index: 21, name: 'বিনামূল্যে পার্কিং', type: 'corner' },
-    { index: 22, name: 'বাসা বো', type: 'property', color: 'orange', price: 200 },
-    { index: 23, name: 'সুযোগ', type: 'chance' },
-    { index: 24, name: '', type: 'property', color: 'red' },
-    { index: 25, name: 'ধানমন্ডি', type: 'property', color: 'red', price: 220 },
-    { index: 26, name: 'গ্রিন রোড', type: 'property', color: 'red', price: 220 },
-    { index: 27, name: 'আখতারুজ্জামান রেলওয়ে', type: 'railroad', price: 200 },
-    { index: 28, name: '', type: 'property', color: 'red' },
-    { index: 29, name: 'এলিফ্যান্ট রোড', type: 'property', color: 'red', price: 240 },
-    { index: 30, name: 'কারাগারে যান', type: 'corner' },
-    { index: 31, name: '', type: 'property', color: 'yellow' },
-    { index: 32, name: 'কলাবাগান', type: 'property', color: 'yellow', price: 260 },
-    { index: 33, name: 'নিউ মার্কেট', type: 'property', color: 'yellow', price: 260 },
-    { index: 34, name: 'কমিউনিটি ফান্ড', type: 'community' },
-    { index: 35, name: 'পল্টন', type: 'property', color: 'yellow', price: 280 },
-    { index: 36, name: 'হাজীপুর রেলওয়ে', type: 'railroad', price: 200 },
-    { index: 37, name: 'সুযোগ', type: 'chance' },
-    { index: 38, name: 'শাহবাগ', type: 'property', color: 'green', price: 300 },
-    { index: 39, name: 'বসুন্ধরা', type: 'property', color: 'darkblue', price: 400 }
+    // Bottom row: 0-10 (right to left)
+    { index: 0, name: 'শুরু', name_en: 'Go', name_bn: 'শুরু (Go)', type: 'corner', price: null },
+    { index: 1, name: 'কুরিল বস্তি', name_en: 'Kuril Basti', name_bn: 'কুরিল বস্তি', type: 'property', color: 'brown', price: 60 },
+    { index: 2, name: 'কমিউনিটি ফান্ড', name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
+    { index: 3, name: 'করাইল বস্তি', name_en: 'Karail Basti', name_bn: 'করাইল বস্তি', type: 'property', color: 'brown', price: 60 },
+    { index: 4, name: 'আয়কর', name_en: 'Income Tax', name_bn: 'আয়কর', type: 'tax', price: 200 },
+    { index: 5, name: 'কমলাপুর', name_en: 'Kamalapur Railway Station', name_bn: 'কমলাপুর রেলওয়ে স্টেশন', type: 'railroad', price: 200 },
+    { index: 6, name: 'মিরপুর', name_en: 'Mirpur', name_bn: 'মিরপুর', type: 'property', color: 'lightblue', price: 100 },
+    { index: 7, name: 'সুযোগ', name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
+    { index: 8, name: 'মোহাম্মদপুর', name_en: 'Mohammadpur', name_bn: 'মোহাম্মদপুর', type: 'property', color: 'lightblue', price: 100 },
+    { index: 9, name: 'উত্তরা', name_en: 'Uttara', name_bn: 'উত্তরা', type: 'property', color: 'lightblue', price: 120 },
+    // Corner: 10 (Jail)
+    { index: 10, name: 'কারাগার', name_en: 'Jail', name_bn: 'কারাগার', type: 'corner' },
+    
+    // Left column: 11-20 (bottom to top)
+    { index: 11, name: 'তেজগাঁও', name_en: 'Tejgaon', name_bn: 'তেজগাঁও', type: 'property', color: 'pink', price: 140 },
+    { index: 12, name: 'ডেসকো', name_en: 'DESCO', name_bn: 'ডেসকো', type: 'utility', price: 150 },
+    { index: 13, name: 'খিলগাঁও', name_en: 'Khilgaon', name_bn: 'খিলগাঁও', type: 'property', color: 'pink', price: 140 },
+    { index: 14, name: 'বিমানবন্দর', name_en: 'Bimanbandar Railway Station', name_bn: 'বিমানবন্দর রেলওয়ে স্টেশন', type: 'railroad', price: 200 },
+    { index: 15, name: 'মগবাজার', name_en: 'Magbazar', name_bn: 'মগবাজার', type: 'property', color: 'pink', price: 160 },
+    { index: 16, name: 'কমিউনিটি ফান্ড', name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
+    { index: 17, name: 'মালিবাগ', name_en: 'Malibagh', name_bn: 'মালিবাগ', type: 'property', color: 'orange', price: 180 },
+    { index: 18, name: 'রামপুরা', name_en: 'Rampura', name_bn: 'রামপুরা', type: 'property', color: 'orange', price: 180 },
+    // Corner: 20 (Free Parking)
+    { index: 20, name: 'বিনামূল্যে পার্কিং', name_en: 'Free Parking', name_bn: 'বিনামূল্যে পার্কিং', type: 'corner' },
+    
+    // Top row: 21-30 (left to right)
+    { index: 21, name: 'বাসা বো', name_en: 'Basabo', name_bn: 'বাসা বো', type: 'property', color: 'orange', price: 200 },
+    { index: 22, name: 'সুযোগ', name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
+    { index: 23, name: 'ধানমন্ডি', name_en: 'Dhanmondi', name_bn: 'ধানমন্ডি', type: 'property', color: 'red', price: 220 },
+    { index: 24, name: 'গ্রিন রোড', name_en: 'Green Road', name_bn: 'গ্রিন রোড', type: 'property', color: 'red', price: 220 },
+    { index: 25, name: 'আখতারুজ্জামান', name_en: 'Akhataruzzaman Railway Station', name_bn: 'আখতারুজ্জামান রেলওয়ে স্টেশন', type: 'railroad', price: 200 },
+    { index: 26, name: 'এলিফ্যান্ট রোড', name_en: 'Elephant Road', name_bn: 'এলিফ্যান্ট রোড', type: 'property', color: 'red', price: 240 },
+    { index: 27, name: 'ওয়াসা', name_en: 'WASA', name_bn: 'ওয়াসা', type: 'utility', price: 150 },
+    { index: 28, name: 'কারাগারে যান', name_en: 'Go To Jail', name_bn: 'কারাগারে যান', type: 'corner' },
+    
+    // Right column: 29-39 (top to bottom)
+    { index: 29, name: 'কলাবাগান', name_en: 'Kalabagan', name_bn: 'কলাবাগান', type: 'property', color: 'yellow', price: 260 },
+    { index: 30, name: 'নিউ মার্কেট', name_en: 'New Market', name_bn: 'নিউ মার্কেট', type: 'property', color: 'yellow', price: 260 },
+    { index: 31, name: 'কমিউনিটি ফান্ড', name_en: 'Community Chest', name_bn: 'কমিউনিটি ফান্ড', type: 'community' },
+    { index: 32, name: 'পল্টন', name_en: 'Paltan', name_bn: 'পল্টন', type: 'property', color: 'yellow', price: 280 },
+    { index: 33, name: 'হাজীপুর', name_en: 'Hazipur Railway Station', name_bn: 'হাজীপুর রেলওয়ে স্টেশন', type: 'railroad', price: 200 },
+    { index: 34, name: 'সুযোগ', name_en: 'Chance', name_bn: 'সুযোগ', type: 'chance' },
+    { index: 35, name: 'শাহবাগ', name_en: 'Shahbag', name_bn: 'শাহবাগ', type: 'property', color: 'green', price: 300 },
+    { index: 36, name: 'কারওয়ান বাজার', name_en: 'Karwan Bazar', name_bn: 'কারওয়ান বাজার', type: 'property', color: 'green', price: 300 },
+    { index: 37, name: 'বনানী', name_en: 'Banani', name_bn: 'বনানী', type: 'property', color: 'darkblue', price: 350 },
+    { index: 38, name: 'বসুন্ধরা', name_en: 'Bashundhara', name_bn: 'বসুন্ধরা', type: 'property', color: 'darkblue', price: 400 }
   ];
   
   return spaces;
@@ -247,66 +249,145 @@ function generateBoardSpaces() {
 
 /**
  * Get grid position for a space index
- * Standard Monopoly board layout:
- * - Go is at bottom-right (space 0)
- * - Bottom row: 0-10 (right to left)
- * - Left column: 10-20 (bottom to top)
- * - Top row: 20-30 (left to right)
- * - Right column: 30-40 (top to bottom)
+ * Standard Monopoly board layout (40 spaces, 0-39):
+ * - Go (0) is at bottom-right corner
+ * - Board goes counter-clockwise
+ * - Bottom row: 0-10 (Go → Jail, right to left)
+ * - Left column: 10-20 (Jail → Free Parking, bottom to top)  
+ * - Top row: 20-30 (Free Parking → Go To Jail, left to right)
+ * - Right column: 30-40/0 (Go To Jail → Go, top to bottom)
  */
 function getGridPosition(index) {
-  // Board is 11x11 grid
-  // Bottom row (Go corner): spaces 0-10, row 11, cols 11-1
-  // Left column: spaces 10-20, rows 11-1, col 1
-  // Top row: spaces 20-30, row 1, cols 1-11
-  // Right column: spaces 30-40, rows 1-11, col 11
+  // Board is 11x11 grid (positions 1-11 for both row and col)
+  // Corners are at: (11,11)=Go, (11,1)=Jail, (1,1)=Free Parking, (1,11)=Go To Jail
   
   if (index >= 0 && index <= 10) {
-    // Bottom row (right to left, Go is at bottom-right)
+    // Bottom row: Go(0) at col 11 → Jail(10) at col 1
     return { row: 11, col: 11 - index };
   } else if (index >= 11 && index <= 20) {
-    // Left column (bottom to top)
+    // Left column: Jail(10) at row 11 → Free Parking(20) at row 1
     return { row: 11 - (index - 10), col: 1 };
   } else if (index >= 21 && index <= 30) {
-    // Top row (left to right)
+    // Top row: Free Parking(20) at col 1 → Go To Jail(30) at col 11
     return { row: 1, col: index - 19 };
   } else if (index >= 31 && index <= 39) {
-    // Right column (top to bottom)
+    // Right column: Go To Jail(30) at row 1 → Bashundhara(38) at row 9, then back to Go
     return { row: index - 29, col: 11 };
   }
   
-  return { row: 11, col: 11 }; // Default to Go position
+  // Default to Go position
+  return { row: 11, col: 11 };
 }
 
 /**
  * Select a space on the board
  */
 function selectSpace(index) {
-  const property = gameState.properties.find(p => p.space_number === index);
+  const spaces = generateBoardSpaces();
+  const space = spaces.find(s => s.index === index);
   const container = document.getElementById('propertyDetails');
-  
-  if (!property) {
+
+  if (!space) {
+    container.innerHTML = `<p class="empty-state">Invalid space</p>`;
+    return;
+  }
+
+  // Handle special spaces (corners, chance, community chest, tax)
+  if (space.type === 'corner') {
     container.innerHTML = `
       <div class="property-card">
-        <div class="property-name">Special Space</div>
-        <p>This is a special space (Go, Jail, etc.)</p>
+        <div class="property-name">${space.name_en || space.name_bn}</div>
+        <div class="property-name-bn">${space.name_bn}</div>
+        <p>Special corner space</p>
       </div>
     `;
     return;
   }
-  
-  container.innerHTML = `
-    <div class="property-card">
-      <div class="property-name">${property.name_en}</div>
-      <div class="property-name-bn">${property.name_bn}</div>
-      <div class="property-price">${formatCurrency(property.price)}</div>
-      <div class="property-rent">
-        <div>ভাড়া: ${formatCurrency(property.rent_base)}</div>
-        ${property.rent_1 ? `<div>১টি ঘর: ${formatCurrency(property.rent_1)}</div>` : ''}
-        ${property.rent_2 ? `<div>২টি ঘর: ${formatCurrency(property.rent_2)}</div>` : ''}
+
+  if (space.type === 'chance') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">সুযোগ (Chance)</div>
+        <p>Draw a Chance card</p>
       </div>
-    </div>
-  `;
+    `;
+    return;
+  }
+
+  if (space.type === 'community') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">কমিউনিটি ফান্ড (Community Fund)</div>
+        <p>Draw a Community Fund card</p>
+      </div>
+    `;
+    return;
+  }
+
+  if (space.type === 'tax') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">${space.name_en}</div>
+        <div class="property-name-bn">${space.name_bn}</div>
+        <div class="property-price">${formatCurrency(space.price)}</div>
+        <p>Tax space</p>
+      </div>
+    `;
+    return;
+  }
+
+  // Handle railroads
+  if (space.type === 'railroad') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">${space.name_en}</div>
+        <div class="property-name-bn">${space.name_bn}</div>
+        <div class="property-price">${formatCurrency(space.price)}</div>
+        <div class="property-rent">
+          <div>১টি রেল: ${formatCurrency(25)}</div>
+          <div>২টি রেল: ${formatCurrency(50)}</div>
+          <div>৩টি রেল: ${formatCurrency(100)}</div>
+          <div>৪টি রেল: ${formatCurrency(200)}</div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Handle utilities
+  if (space.type === 'utility') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">${space.name_en}</div>
+        <div class="property-name-bn">${space.name_bn}</div>
+        <div class="property-price">${formatCurrency(space.price)}</div>
+        <div class="property-rent">
+          <div>১টি ইউটিলিটি: ৪× পাশা</div>
+          <div>২টি ইউটিলিটি: ১০× পাশা</div>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Handle properties
+  if (space.type === 'property') {
+    container.innerHTML = `
+      <div class="property-card">
+        <div class="property-name">${space.name_en}</div>
+        <div class="property-name-bn">${space.name_bn}</div>
+        <div class="property-price">${formatCurrency(space.price)}</div>
+        <div class="property-rent">
+          <div>ভাড়া: ${formatCurrency(space.rent_base || 0)}</div>
+          ${space.rent_1 ? `<div>১টি ঘর: ${formatCurrency(space.rent_1)}</div>` : ''}
+          ${space.rent_2 ? `<div>২টি ঘর: ${formatCurrency(space.rent_2)}</div>` : ''}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = `<p class="empty-state">Unknown space type</p>`;
 }
 
 /**
