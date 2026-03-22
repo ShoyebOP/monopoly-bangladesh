@@ -265,38 +265,48 @@ function handleGetGameState(ws, clientId) {
 function getFullGameState(gameId) {
   const db = getDatabase();
   if (!db) {return { players: [], properties: [] };}
+
+  console.log(`Getting game state for gameId: ${gameId}`);
   
+  // Debug: Check game_players table
+  const debugResult = db.exec(`SELECT * FROM game_players WHERE game_id = ${gameId}`);
+  console.log(`game_players for game ${gameId}:`, debugResult);
+
   const playersResult = db.exec(`
     SELECT gp.player_id, p.name, gp.money, gp.position, COALESCE(gp.is_bankrupt, 0) as is_bankrupt
     FROM game_players gp
     JOIN players p ON gp.player_id = p.id
     WHERE gp.game_id = ${gameId}
   `);
-  
+
+  console.log(`playersResult:`, playersResult);
+
   const players = playersResult.length > 0 ? playersResult[0].values.map(row => ({
     id: row[0], name: row[1], money: row[2], position: row[3], is_bankrupt: row[4]
   })) : [];
   
+  console.log(`Parsed players:`, players);
+
   const propsResult = db.exec(`
     SELECT gp.property_id, COALESCE(gp.owner_player_id, 0) as owner_player_id, p.name_en, p.name_bn, p.price, p.rent_base, p.rent_1, p.rent_2, p.rent_3, p.rent_4, p.rent_hotel, p.house_cost, p.color_group, p.space_number
     FROM game_properties gp
     JOIN properties p ON gp.property_id = p.id
     WHERE gp.game_id = ${gameId}
   `);
-  
+
   const properties = propsResult.length > 0 ? propsResult[0].values.map(row => ({
     property_id: row[0], owner_id: row[1], name_en: row[2], name_bn: row[3],
     price: row[4], rent_base: row[5], rent_1: row[6], rent_2: row[7],
     rent_3: row[8], rent_4: row[9], rent_hotel: row[10], house_cost: row[11],
     color: row[12], space_number: row[13]
   })) : [];
-  
+
   const game = activeGames.get(gameId);
-  
-  return { 
-    gameId, 
-    players, 
-    properties, 
+
+  return {
+    gameId,
+    players,
+    properties,
     currentPlayer: game ? game.currentPlayer : 0,
     status: 'playing'
   };
