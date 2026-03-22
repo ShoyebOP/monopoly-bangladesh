@@ -106,7 +106,7 @@ body {
   border: 2px solid #333;
   width: 100%;
   max-width: 95vmin;
-  aspect-ratio: 1 / 1.15;
+  height: 90vmin;
   padding: 2px;
 }
 
@@ -139,9 +139,10 @@ body {
 }
 
 .space .color-bar {
-  height: 10px;
+  height: 15px;
   width: 100%;
   border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
 }
 
 /* Property Color Groups */
