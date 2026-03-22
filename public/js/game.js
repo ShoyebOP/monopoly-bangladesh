@@ -257,27 +257,27 @@ function generateBoardSpaces() {
  * Get grid position for a space index
  * Standard Monopoly board layout (40 spaces, 0-39):
  * - Go (0) is at bottom-right corner
- * - Board goes CLOCKWISE
- * - Bottom row: 0-10 (Go → Jail, left to right)
- * - Left column: 10-20 (Jail → Free Parking, bottom to top)
- * - Top row: 20-30 (Free Parking → Go To Jail, left to right)
- * - Right column: 30-39 (Go To Jail → Bashundhara, top to bottom)
+ * - Board goes CLOCKWISE from Go
+ * - Bottom row: 0-10 (Go at right → Jail at left, right to left)
+ * - Left column: 10-20 (Jail at bottom → Free Parking at top, bottom to top)
+ * - Top row: 20-30 (Free Parking at left → Go To Jail at right, left to right)
+ * - Right column: 30-39 (Go To Jail at top → Bashundhara at bottom, top to bottom)
  */
 function getGridPosition(index) {
   // Board is 11x11 grid (positions 1-11 for both row and col)
   // Corners are at: (11,11)=Go, (11,1)=Jail, (1,1)=Free Parking, (1,11)=Go To Jail
   
   if (index >= 0 && index <= 10) {
-    // Bottom row: Go(0) at col 1 → Jail(10) at col 11
-    return { row: 11, col: index + 1 };
+    // Bottom row: Go(0) at col 11 → Jail(10) at col 1 (right to left)
+    return { row: 11, col: 11 - index };
   } else if (index >= 11 && index <= 20) {
-    // Left column: Jail(10) at row 11 → Free Parking(20) at row 1
+    // Left column: Jail(10) at row 11 → Free Parking(20) at row 1 (bottom to top)
     return { row: 11 - (index - 10), col: 1 };
   } else if (index >= 21 && index <= 30) {
-    // Top row: Free Parking(20) at col 1 → Go To Jail(30) at col 11
+    // Top row: Free Parking(20) at col 1 → Go To Jail(30) at col 11 (left to right)
     return { row: 1, col: index - 19 };
   } else if (index >= 31 && index <= 39) {
-    // Right column: Go To Jail(30) at row 1 → Bashundhara(39) at row 10
+    // Right column: Go To Jail(30) at row 1 → Bashundhara(39) at row 10 (top to bottom)
     return { row: index - 29, col: 11 };
   }
   
