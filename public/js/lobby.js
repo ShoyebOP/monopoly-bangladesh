@@ -63,6 +63,8 @@ async function loadGamePlayers() {
   try {
     const res = await fetch(`/api/games/${selectedGameId}`);
     const game = await res.json();
+    
+    console.log('Game data:', game);
 
     const players = game.players || [];
 
@@ -98,7 +100,8 @@ async function loadGamePlayers() {
     playerSection.style.display = 'block';
     btnJoin.disabled = true;
 
-  } catch {
+  } catch (e) {
+    console.error('Error loading game:', e);
     gamePlayersInfo.innerHTML = '<p>Failed to load game details</p>';
     playerSection.style.display = 'none';
   }
