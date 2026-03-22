@@ -202,47 +202,110 @@ program
     new Command('create')
       .description('Create new game session')
       .option('-n, --name <name>', 'Game name')
-      .action((_options) => {
+      .option('-p, --players <ids>', 'Player IDs (comma-separated)')
+      .action(async (options) => {
         console.log('Creating new game...');
-        if (!isServerRunning()) {
-          console.log('Error: Server is not running. Start the server first with: node cli/start.js server start');
-          return;
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        let playerIds = [];
+        if (options.players) {
+          playerIds = options.players.split(',').map(id => parseInt(id.trim()));
         }
-        console.log('Game create not yet implemented');
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/games`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: options.name || `Game ${Date.now()}`,
+              playerIds
+            })
+          });
+          
+          const game = await res.json();
+          
+          if (res.ok) {
+            console.log(`Game created!`);
+            console.log(`  ID: ${game.id}`);
+            console.log(`  Name: ${game.name}`);
+            console.log(`  Players: ${game.playerIds?.join(', ') || 'None'}`);
+            console.log(`\nOpen: ${baseUrl}/lobby.html?id=${game.id}`);
+          } else {
+            console.log(`Error: ${game.error}`);
+          }
+        } catch {
+          console.log(`Error: Cannot connect to server`);
+        }
       })
   )
   .addCommand(
     new Command('join')
       .description('Join existing game')
-      .argument('<gameId>', 'Game ID to join')
+      .argument('<gameId>', 'Game ID')
       .action((gameId) => {
-        console.log(`Joining game: ${gameId}`);
-        if (!isServerRunning()) {
-          console.log('Error: Server is not running. Start the server first with: node cli/start.js server start');
-          return;
-        }
-        console.log('Game join not yet implemented');
+        const port = process.env.PORT || '3000';
+        console.log(`Join at: http://localhost:${port}/lobby.html?id=${gameId}`);
       })
   )
   .addCommand(
     new Command('list')
       .description('List active games')
-      .action(() => {
+      .action(async () => {
         console.log('Active games:');
-        if (!isServerRunning()) {
-          console.log('  (server not running)');
-          return;
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/games`);
+          const games = await res.json();
+          
+          if (games.length === 0) {
+            console.log('  No games');
+          } else {
+            games.forEach(game => {
+              console.log(`  [${game.id}] ${game.name} (${game.status})`);
+            });
+          }
+        } catch {
+          console.log('  (cannot connect)');
         }
-        console.log('  No active games');
       })
   )
   .addCommand(
     new Command('status')
       .description('Show game details')
       .argument('<gameId>', 'Game ID')
-      .action((gameId) => {
-        console.log(`Game status for: ${gameId}`);
-        console.log('Game status not yet implemented');
+      .action(async (gameId) => {
+        console.log(`Game ${gameId}:`);
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/games/${gameId}`);
+          const game = await res.json();
+          
+          if (res.ok) {
+            console.log(`  Name: ${game.name || 'N/A'}`);
+            console.log(`  Status: ${game.status || 'unknown'}`);
+            console.log(`  Players:`);
+            if (game.players?.length > 0) {
+              game.players.forEach((p, i) => {
+                const marker = i === game.currentPlayer ? ' >>' : '   ';
+                console.log(`${marker} ${p.name}: ৳${p.money}, Pos: ${p.position}`);
+              });
+            } else {
+              console.log(`    No players`);
+            }
+          } else {
+            console.log(`  Error: ${game.error}`);
+          }
+        } catch {
+          console.log(`  (cannot connect)`);
+        }
       })
   );
 
@@ -254,38 +317,78 @@ program
     new Command('add')
       .description('Add new player')
       .argument('<name>', 'Player name')
-      .action((name) => {
+      .action(async (name) => {
         console.log(`Adding player: ${name}`);
-        if (!isServerRunning()) {
-          console.log('Error: Server is not running. Start the server first with: node cli/start.js server start');
-          return;
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/players`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name })
+          });
+          
+          const result = await res.json();
+          
+          if (res.ok) {
+            console.log(`Added! ID: ${result.id}, Name: ${result.name}`);
+          } else {
+            console.log(`Error: ${result.error}`);
+          }
+        } catch {
+          console.log(`Error: Cannot connect to server`);
         }
-        console.log('Player add not yet implemented');
       })
   )
   .addCommand(
     new Command('remove')
       .description('Remove player')
-      .argument('<name>', 'Player name')
-      .action((name) => {
-        console.log(`Removing player: ${name}`);
-        if (!isServerRunning()) {
-          console.log('Error: Server is not running. Start the server first with: node cli/start.js server start');
-          return;
+      .argument('<id>', 'Player ID')
+      .action(async (id) => {
+        console.log(`Removing player ${id}...`);
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/players/${id}`, { method: 'DELETE' });
+          
+          if (res.ok) {
+            console.log(`Removed!`);
+          } else {
+            const result = await res.json();
+            console.log(`Error: ${result.error}`);
+          }
+        } catch {
+          console.log(`Error: Cannot connect`);
         }
-        console.log('Player remove not yet implemented');
       })
   )
   .addCommand(
     new Command('list')
       .description('List all players')
-      .action(() => {
-        console.log('Registered players:');
-        if (!isServerRunning()) {
-          console.log('  (server not running)');
-          return;
+      .action(async () => {
+        console.log('Players:');
+        
+        const port = process.env.PORT || '3000';
+        const baseUrl = `http://localhost:${port}`;
+        
+        try {
+          const res = await fetch(`${baseUrl}/api/players`);
+          const players = await res.json();
+          
+          if (players.length === 0) {
+            console.log('  No players');
+          } else {
+            players.forEach(p => {
+              console.log(`  [${p.id}] ${p.name}`);
+            });
+          }
+        } catch {
+          console.log('  (cannot connect)');
         }
-        console.log('  No players registered');
       })
   );
 

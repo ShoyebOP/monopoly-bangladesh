@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monopoly Bangladesh - Lobby</title>
+  <link rel="stylesheet" href="/css/lobby.css">
+</head>
+<body>
+  <header class="lobby-header">
+    <h1>মনোপলি বাংলাদেশ</h1>
+    <p class="subtitle">Select Your Player to Join Game</p>
+  </header>
+
+  <main class="lobby-container">
+    <section class="game-info-section">
+      <h2>খেলা তথ্য (Game Info)</h2>
+      <div id="gameInfo">
+        <p>Loading...</p>
+      </div>
+    </section>
+
+    <section class="player-select-section">
+      <h2>আপনার খেলোয়াড় নির্বাচন করুন (Select Your Player)</h2>
+      <div class="player-list" id="playerList">
+        <p>Loading...</p>
+      </div>
+      <button class="btn btn-primary btn-large" id="btnJoin" disabled>
+        খেলায় যোগ দিন (Join Game)
+      </button>
+    </section>
+  </main>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p>Loading...</p>
+  </div>
+
+  <script src="/js/lobby.js" type="module"></script>
+</body>
+</html>
