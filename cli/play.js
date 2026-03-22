@@ -7,11 +7,9 @@
 
 import { Command } from 'commander';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 import readline from 'readline';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 // Simple game state
 const gameState = {
