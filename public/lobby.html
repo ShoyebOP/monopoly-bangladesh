@@ -9,25 +9,37 @@
 <body>
   <header class="lobby-header">
     <h1>মনোপলি বাংলাদেশ</h1>
-    <p class="subtitle">Select Your Player to Join Game</p>
+    <p class="subtitle">Select Game and Player</p>
   </header>
 
   <main class="lobby-container">
-    <section class="game-info-section">
-      <h2>খেলা তথ্য (Game Info)</h2>
-      <div id="gameInfo">
-        <p>Loading...</p>
+    <!-- Games List -->
+    <section class="section">
+      <h2>খেলা নির্বাচন করুন (Select Game)</h2>
+      <div class="games-list" id="gamesList">
+        <p>Loading games...</p>
       </div>
     </section>
 
-    <section class="player-select-section">
+    <!-- Players List (shown after game selected) -->
+    <section class="section" id="playerSection" style="display:none;">
       <h2>আপনার খেলোয়াড় নির্বাচন করুন (Select Your Player)</h2>
-      <div class="player-list" id="playerList">
-        <p>Loading...</p>
+      <div id="gamePlayersInfo" class="info-box"></div>
+      <div class="players-list" id="playerList">
+        <p>Loading players...</p>
       </div>
       <button class="btn btn-primary btn-large" id="btnJoin" disabled>
         খেলায় যোগ দিন (Join Game)
       </button>
+    </section>
+
+    <!-- Add Player -->
+    <section class="section">
+      <h2>নতুন খেলোয়াড় (New Player)</h2>
+      <div class="input-row">
+        <input type="text" id="newPlayerName" placeholder="Player name">
+        <button class="btn btn-success" id="btnAddPlayer">Add</button>
+      </div>
     </section>
   </main>
 
