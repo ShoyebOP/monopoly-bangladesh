@@ -93,15 +93,15 @@ body {
   background: #e0e0e0;
   border: 3px solid #333;
   width: 100%;
-  max-width: 95vmin;
-  aspect-ratio: 1 / 1.15;
+  max-width: 90vmin;
+  aspect-ratio: 1 / 1;
 }
 
 .space {
   background: white;
   border: 1px solid #ccc;
-  padding: 3px 2px;
-  font-size: 8px;
+  padding: 2px;
+  font-size: 7px;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -126,10 +126,20 @@ body {
 }
 
 .space .color-bar {
-  height: 10px;
+  height: 8px;
   width: 100%;
   border-bottom: 1px solid #ccc;
 }
+
+/* Property Colors */
+.space.brown .color-bar { background: #8d6e63; }
+.space.lightblue .color-bar { background: #4fc3f7; }
+.space.pink .color-bar { background: #f06292; }
+.space.orange .color-bar { background: #ff9800; }
+.space.red .color-bar { background: #e53935; }
+.space.yellow .color-bar { background: #fdd835; }
+.space.green .color-bar { background: #43a047; }
+.space.darkblue .color-bar { background: #1e88e5; }
 
 .space.corner {
   background: #e8eaf6;
