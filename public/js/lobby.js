@@ -6,13 +6,13 @@ let allGames = [];
 let selectedGameId = null;
 let selectedPlayerId = null;
 
-const gamesList = document.getElementById('gamesList');
+const gamesListEl = document.getElementById('gamesList');
 const playerSection = document.getElementById('playerSection');
-const playerList = document.getElementById('playerList');
+const playerListEl = document.getElementById('playerList');
 const gamePlayersInfo = document.getElementById('gamePlayersInfo');
 const btnJoin = document.getElementById('btnJoin');
 const btnAddPlayer = document.getElementById('btnAddPlayer');
-const newPlayerName = document.getElementById('newPlayerName');
+const newPlayerNameEl = document.getElementById('newPlayerName');
 const loadingOverlay = document.getElementById('loadingOverlay');
 
 function showLoading() {
@@ -29,51 +29,50 @@ async function loadGames() {
     allGames = await res.json();
     renderGames();
   } catch {
-    gamesList.innerHTML = '<p>Failed to load games</p>';
+    gamesListEl.innerHTML = '<p>Failed to load games</p>';
   }
 }
 
 function renderGames() {
   if (allGames.length === 0) {
-    gamesList.innerHTML = '<p>No games yet. Create one via CLI:</p><code>node cli/start.js game create -p 1,2</code>';
+    gamesListEl.innerHTML = '<p>No games yet. Create one via CLI:</p><code>node cli/start.js game create -p 1,2</code>';
     return;
   }
   
-  gamesList.innerHTML = allGames.map(game => `
+  gamesListEl.innerHTML = allGames.map(game => `
     <div class="game-item ${selectedGameId === game.id ? 'selected' : ''}" data-id="${game.id}">
       <div class="game-name">${game.name || 'Game #' + game.id}</div>
       <div class="game-info">ID: ${game.id} | Status: ${game.status} | Created: ${new Date(game.created_at).toLocaleString('bn-BD')}</div>
     </div>
   `).join('');
   
-  gamesList.querySelectorAll('.game-item').forEach(item => {
-    item.addEventListener('click', async () => {
+  // Re-attach event listeners
+  gamesListEl.querySelectorAll('.game-item').forEach(item => {
+    item.onclick = async () => {
       selectedGameId = parseInt(item.dataset.id);
-      gamesList.querySelectorAll('.game-item').forEach(i => i.classList.remove('selected'));
+      gamesListEl.querySelectorAll('.game-item').forEach(i => i.classList.remove('selected'));
       item.classList.add('selected');
-      
-      // Load game details
       await loadGamePlayers();
-    });
+    };
   });
 }
 
 async function loadGamePlayers() {
-  if (!selectedGameId) {return;}
-  
+  if (!selectedGameId) return;
+
   try {
     const res = await fetch(`/api/games/${selectedGameId}`);
     const game = await res.json();
-    
+
     const players = game.players || [];
-    
+
     if (players.length === 0) {
       gamePlayersInfo.innerHTML = `<p>No players in this game.</p>`;
-      playerList.innerHTML = '<p>Add players via CLI or below</p>';
+      playerListEl.innerHTML = '<p>Add players via CLI or below</p>';
       playerSection.style.display = 'none';
       return;
     }
-    
+
     gamePlayersInfo.innerHTML = `
       <p><strong>Game:</strong> ${game.name || 'Game #' + game.id}</p>
       <p><strong>Players (${players.length}):</strong></p>
@@ -81,37 +80,38 @@ async function loadGamePlayers() {
         ${players.map(p => `<li>${p.name} - ৳${p.money} (Pos: ${p.position})</li>`).join('')}
       </ul>
     `;
-    
-    playerList.innerHTML = players.map(player => `
+
+    playerListEl.innerHTML = players.map(player => `
       <div class="player-option" data-id="${player.id}">${player.name}</div>
     `).join('');
-    
-    playerList.querySelectorAll('.player-option').forEach(option => {
-      option.addEventListener('click', () => {
+
+    // Re-attach event listeners
+    playerListEl.querySelectorAll('.player-option').forEach(option => {
+      option.onclick = () => {
         selectedPlayerId = parseInt(option.dataset.id);
-        playerList.querySelectorAll('.player-option').forEach(o => o.classList.remove('selected'));
+        playerListEl.querySelectorAll('.player-option').forEach(o => o.classList.remove('selected'));
         option.classList.add('selected');
         btnJoin.disabled = false;
-      });
+      };
     });
-    
+
     playerSection.style.display = 'block';
     btnJoin.disabled = true;
-    
+
   } catch {
     gamePlayersInfo.innerHTML = '<p>Failed to load game details</p>';
     playerSection.style.display = 'none';
   }
 }
 
-btnJoin.addEventListener('click', () => {
-  if (!selectedGameId || !selectedPlayerId) {return;}
+btnJoin.onclick = () => {
+  if (!selectedGameId || !selectedPlayerId) return;
   window.location.href = `/game.html?id=${selectedGameId}&player=${selectedPlayerId}`;
-});
+};
 
-btnAddPlayer.addEventListener('click', async () => {
-  const name = newPlayerName.value.trim();
-  if (!name) {return;}
+btnAddPlayer.onclick = async () => {
+  const name = newPlayerNameEl.value.trim();
+  if (!name) return;
   
   try {
     const res = await fetch('/api/players', {
@@ -121,8 +121,8 @@ btnAddPlayer.addEventListener('click', async () => {
     });
     
     if (res.ok) {
-      newPlayerName.value = '';
-      if (selectedGameId) {await loadGamePlayers();}
+      newPlayerNameEl.value = '';
+      if (selectedGameId) await loadGamePlayers();
       alert('Player added!');
     } else {
       const result = await res.json();
@@ -131,7 +131,7 @@ btnAddPlayer.addEventListener('click', async () => {
   } catch {
     alert('Failed to add player');
   }
-});
+};
 
 // Initialize
 showLoading();
