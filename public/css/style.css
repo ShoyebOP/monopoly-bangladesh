@@ -107,9 +107,11 @@ body {
 /* Board Container */
 .board-container {
   margin-bottom: var(--spacing-lg);
-  overflow: auto;
+  overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .board {
@@ -120,7 +122,7 @@ body {
   background-color: var(--color-border);
   border: 2px solid var(--color-text);
   width: 100%;
-  max-width: 500px;
+  max-width: 95vmin;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
@@ -395,6 +397,23 @@ body {
   color: var(--color-text-light);
 }
 
+.property-card .property-house-cost {
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+.property-card .property-mortgage {
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-warning);
+  font-weight: bold;
+}
+
 .property-card .property-owner {
   margin-top: var(--spacing-sm);
   padding-top: var(--spacing-sm);
@@ -557,28 +576,28 @@ body {
   }
   
   .board {
-    max-width: 320px;
+    max-width: 92vmin;
   }
   
   .space {
-    font-size: 8px;
+    font-size: 7px;
     padding: 1px;
   }
   
   .space .color-bar {
-    height: 8px;
+    height: 6px;
   }
   
   .space .space-name {
-    font-size: 7px;
-  }
-  
-  .space .space-price {
     font-size: 6px;
   }
   
+  .space .space-price {
+    font-size: 5px;
+  }
+  
   .die {
-    font-size: 24px;
+    font-size: 20px;
   }
   
   .action-buttons {
