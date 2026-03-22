@@ -58,6 +58,18 @@ program
   .description('Monopoly Bangladesh - CLI for game management')
   .version(packageJson.version);
 
+// Play command - Interactive game
+program
+  .command('play')
+  .description('Start an interactive 2-player Monopoly game')
+  .action(() => {
+    const playPath = join(rootDir, 'cli', 'play.js');
+    spawn('node', [playPath], {
+      cwd: rootDir,
+      stdio: 'inherit'
+    });
+  });
+
 // Server commands
 program
   .command('server')
